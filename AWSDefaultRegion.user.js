@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AWSDefaultRegion
-// @version      1.3
+// @version      1.4
 // @author       Sasikumar K
 // @source       https://github.com/sasi1212/awsasi/raw/master/AWSDefaultRegion.user.js
 // @namespace    aws.amazon.com
