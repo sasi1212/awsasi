@@ -1,7 +1,10 @@
 // ==UserScript==
 // @name         AWSDefaultRegion
+// @version      1.1
+// @author       Sasikumar K
+// @source       https://github.com/sasi1212/awsasi/raw/master/AWSDefaultRegion.user.js
 // @namespace    aws.amazon.com
-// @description  This script changes AWS Region to the
+// @description  This script changes AWS Region to the configured value in "regionRequired" variable. Look at the end of UserScript header
 // @include      https://*.aws.amazon.com/*
 // @match        https://*.aws.amazon.com/*
 // @exclude      *console.chime.aws.amazon.com/*
@@ -18,7 +21,11 @@
 // ==/UserScript==
 
 // Modify the region required.
-var regionRequired = "ca-central-1";
+// Refer: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+var regionRequired = "undefined";
+
+if(regionRequired === "undefined")
+    return;
 
 function getUrlVars() {
     var vars = {};
