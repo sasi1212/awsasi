@@ -24,12 +24,16 @@
 // Refer: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 var regionRequired = "undefined";
 
-if(regionRequired === "undefined") {
+// ATTENTION: DO NOT CHANGE ANYTHING BELOW THIS LINE !!!
+
+if(regionRequired === "undefined")
+{
     console.log("regionRequired is undefinedm, hence exiting from AWSDefaultRegion userscript");
     return;
 }
- 
-function getUrlVars() {
+
+function getUrlVars()
+{
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         vars[key] = value;
@@ -37,7 +41,8 @@ function getUrlVars() {
     return vars;
 }
 
-function getUrlParam(parameter, defaultvalue){
+function getUrlParam(parameter, defaultvalue)
+{
     var urlparameter = defaultvalue;
     if(window.location.href.indexOf(parameter) > -1){
         urlparameter = getUrlVars()[parameter];
