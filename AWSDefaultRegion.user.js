@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AWSDefaultRegion
-// @version      1.2
+// @version      1.3
 // @author       Sasikumar K
 // @source       https://github.com/sasi1212/awsasi/raw/master/AWSDefaultRegion.user.js
 // @namespace    aws.amazon.com
@@ -27,7 +27,8 @@ var regionRequired = "undefined";
 if(regionRequired === "undefined") {
     console.log("regionRequired is undefinedm, hence exiting from AWSDefaultRegion userscript");
     return;
-
+}
+ 
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
