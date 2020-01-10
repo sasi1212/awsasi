@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AWSDefaultRegion
-// @version      1.4
+// @version      1.5
 // @author       Sasikumar K
 // @source       https://github.com/sasi1212/awsasi/raw/master/AWSDefaultRegion.user.js
 // @namespace    aws.amazon.com
@@ -110,4 +110,8 @@ if (regionRequired !== existingRegion)
     }
 }
 var elem = document.getElementById("nav-regionMenu");
-elem.parentNode.removeChild(elem);
+
+if(elem)
+{
+    elem.parentNode.removeChild(elem);
+}
