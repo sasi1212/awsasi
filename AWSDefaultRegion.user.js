@@ -2,6 +2,7 @@
 // @name         AWSDefaultRegion
 // @version      1.6
 // @author       Sasikumar K
+// @source       https://github.com/sasi1212/awsasi/raw/master/AWSDefaultRegion.user.js
 // @namespace    aws.amazon.com
 // @description  This script changes AWS Region to the configured value in "regionRequired" variable. Look at the end of UserScript header.
 // @include      https://*.aws.amazon.com/*
