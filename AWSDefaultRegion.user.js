@@ -1,14 +1,18 @@
 // ==UserScript==
 // @name         AWSDefaultRegion
-// @version      1.5
+// @version      1.6
 // @author       Sasikumar K
-// @source       https://github.com/sasi1212/awsasi/raw/master/AWSDefaultRegion.user.js
 // @namespace    aws.amazon.com
-// @description  This script changes AWS Region to the configured value in "regionRequired" variable. Look at the end of UserScript header
+// @description  This script changes AWS Region to the configured value in "regionRequired" variable. Look at the end of UserScript header.
 // @include      https://*.aws.amazon.com/*
 // @match        https://*.aws.amazon.com/*
 // @exclude      *console.chime.aws.amazon.com/*
 // @exclude      *quicksight.aws.amazon.com/*
+// @exclude      *s3.console.aws.amazon.com/*
+// @exclude      *console.aws.amazon.com/iam*
+// @exclude      *console.aws.amazon.com/route53*
+// @exclude      *console.aws.amazon.com/waf*
+// @exclude      *console.aws.amazon.com/cloudfront*
 // @grant        GM_getValue
 // @grant        GM.getValue
 // @grant        GM_setValue
@@ -20,6 +24,7 @@
 // @connect *
 // ==/UserScript==
 
+// Refer https://github.com/sasi1212/awsasi for latest updates
 // Modify the region required.
 // Refer: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 var regionRequired = "undefined";
@@ -28,7 +33,7 @@ var regionRequired = "undefined";
 
 if(regionRequired === "undefined")
 {
-    console.log("regionRequired is undefinedm, hence exiting from AWSDefaultRegion userscript");
+    console.log("regionRequired is undefined, hence exiting from AWSDefaultRegion userscript");
     return;
 }
 
@@ -106,12 +111,25 @@ if (regionRequired !== existingRegion)
             window.location.reload();
         } else {
             localStorage.removeItem('firstReLoad');
+            console.log("Page reloaded by AWSDefaultRegion plugin");
         }
     }
 }
-var elem = document.getElementById("nav-regionMenu");
 
-if(elem)
+var toRemove = document.getElementById("nav-regionMenu");
+
+if(toRemove)
 {
-    elem.parentNode.removeChild(elem);
+    var toRemoveId = toRemove.getAttribute("id");
+    var toRemoveClass = toRemove.getAttribute("class");
+    var toAdd = document.createElement('a');
+    toAdd.setAttribute("id", toRemoveId);
+    toAdd.setAttribute("class", toRemoveClass);
+    var toAddDiv = document.createElement('div');
+    toAddDiv.setAttribute("class", "nav-elt-label");
+    toAddDiv.textContent = regionRequired;
+    toAdd.appendChild(toAddDiv);
+    toRemove.parentNode.replaceChild(toAdd, toRemove);
+    console.log("Configured region is ".concat(regionRequired))
+    console.log("Region menu is removed by AWSDefaultRegion plugin");
 }
